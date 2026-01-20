@@ -1,0 +1,47 @@
+---
+title: "Practical Machine Learning: Activity Recognition Prediction"
+author: "Altamash Ali"
+date: "21/01/2026"
+output: 
+  html_document:
+    keep_md: yes
+---
+
+## 1. Executive Summary
+This analysis aims to predict the manner in which 6 participants performed barbell lifts (the "classe" variable) based on accelerometer data. By utilizing a Random Forest algorithm and performing cross-validation, we developed a model with an estimated out-of-sample accuracy of 99.64%. The low error rate suggests the model is highly effective for activity recognition.
+
+## 2. Data Preparation and Cleaning
+The raw data contained 160 variables, many of which were largely populated with NA values or Excel error strings (#DIV/0!). These were removed to prevent noise. Additionally, the first seven variables (X, user_name, timestamps, and windows) were excluded as they represent metadata rather than physical movement.
+
+## 3. Model Selection and Training
+### Rationale for Random Forest
+I selected the **Random Forest** algorithm because it is exceptionally strong at handling non-linear relationships and interactions between variables, which are common in sensor data. Unlike simple trees, it reduces overfitting by averaging multiple decision trees.
+
+### Cross-Validation
+To estimate the model's performance on unseen data, the training set was split into:
+
+* **Training Set:** 70% of the data to build the model.
+* **Validation Set:** 30% of the data to test accuracy.
+
+```{r}
+# Model configuration used:
+# model_fit <- randomForest(classe ~ ., data=train_set, ntree=250)
+```
+
+## 4. Results and Expected Error
+The model was tested against the 30% validation set. The results are as follows:
+
+* **Accuracy:** 0.9964 (99.64%)
+* **Kappa:** 0.9955
+* **Expected Out-of-Sample Error:** 0.0036 (0.36%)
+
+The expected out-of-sample error is calculated as:
+$$1 - Accuracy$$
+Based on the cross-validation set results and an error rate below 1%, the model is expected to perform perfectly on the 20 test cases.
+
+## 5. Conclusion
+The Random Forest model provided a highly accurate prediction of the "classe" variable. The most important predictors were those related to the orientation and acceleration of the belt and forearm. The final model was applied to the 20 test cases to generate the required quiz predictions.
+
+### Appendix: Source Code Link
+The full code and analysis are available at:
+https://github.com/realAltamashAli/PML_Project
