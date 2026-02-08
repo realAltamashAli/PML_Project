@@ -2,6 +2,8 @@
 
 This repository contains the final project for the **Practical Machine Learning** course, part of the Data Science Specialization by Johns Hopkins University on Coursera.
 
+[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
+
 ## Project Overview
 The goal of this project is to predict the manner in which participants performed barbell lifts. This is a classification problem where the outcome is the `classe` variable, categorized into five different ways (A, B, C, D, E).
 
